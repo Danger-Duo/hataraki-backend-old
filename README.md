@@ -19,5 +19,5 @@ make run
 
 # package and run jar (production)
 make build
-java -jar target/path-to-jar
+./bootstrap.sh
 ```
