@@ -1,48 +1,36 @@
 package com.hataraki.backend.jobapplication;
 
 import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.Data;
+
+@Data
+@Document(collection = "jobapplications")
 public class JobApplication {
 
-    private long id;
+    @Id
+    private String id;
     private String firstName;
     private String lastName;
+    private String email;
+    private String startDate;
     private String resumeLink;
-    private long createdBy;
+    private String personalStatement;
+    private String createdBy;
     private Date dateApplied;
 
-    public JobApplication(long id, String firstName, String lastName, String resumeLink, long createdBy,
+    public JobApplication(String firstName, String lastName, String email, String startDate,
+            String resumeLink, String personalStatement, String createdBy,
             Date dateApplied) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.startDate = startDate;
         this.resumeLink = resumeLink;
+        this.personalStatement = personalStatement;
         this.createdBy = createdBy;
         this.dateApplied = dateApplied;
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public Date getDateApplied() {
-        return dateApplied;
-    }
-
-    public String getResumeLink() {
-        return resumeLink;
-    }
-
-    public long getCreatedBy() {
-        return createdBy;
-    }
-
 }
