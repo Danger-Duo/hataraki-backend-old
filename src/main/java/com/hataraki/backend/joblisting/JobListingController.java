@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/job-listing")
+@RequestMapping("/api/v1/job-listings")
 public class JobListingController {
     @PostMapping
     public JobListing createJobListing(@RequestBody JobListing jobListing) {
-        return new JobListing(jobListing.getId(), jobListing.getTitle(), jobListing.getDescription(),
+        return new JobListing(jobListing.getTitle(), jobListing.getDescription(),
                 jobListing.getCreatedBy(), jobListing.getDatePosted());
     }
 }
