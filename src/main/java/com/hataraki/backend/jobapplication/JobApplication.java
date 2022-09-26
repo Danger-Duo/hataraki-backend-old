@@ -26,12 +26,12 @@ public class JobApplication {
     // TODO: reference to user collection
     // @DBRef
     private String createdBy;
-    private LocalDateTime createdOn;
-    private LocalDateTime updatedOn;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public JobApplication(JobListing jobListing, String firstName, String lastName, String email, String startDate,
             String resumeLink, String personalStatement, String createdBy,
-            LocalDateTime createdOn, LocalDateTime updatedOn) {
+            LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.jobListing = jobListing;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,7 +40,7 @@ public class JobApplication {
         this.resumeLink = resumeLink;
         this.personalStatement = personalStatement;
         this.createdBy = createdBy;
-        this.createdOn = createdOn;
-        this.updatedOn = updatedOn;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }

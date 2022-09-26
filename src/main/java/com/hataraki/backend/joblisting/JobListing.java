@@ -23,18 +23,18 @@ public class JobListing {
     // TODO: reference to user collection
     // @DBRef
     private String createdBy;
-    private LocalDateTime createdOn;
-    private LocalDateTime updatedOn;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public JobListing(String title, String description, String location, String startDate, String employmentType,
-            String createdBy, LocalDateTime createdOn, LocalDateTime updatedOn) {
+            String createdBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.startDate = startDate;
         this.employmentType = employmentType;
         this.createdBy = createdBy;
-        this.createdOn = createdOn;
-        this.updatedOn = updatedOn;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }

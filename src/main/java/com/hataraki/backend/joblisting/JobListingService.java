@@ -3,6 +3,7 @@ package com.hataraki.backend.joblisting;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,8 @@ public class JobListingService {
 
   @Autowired
   private JobListingRepository jobListingRepository;
+  @Autowired
+  private ModelMapper modelMapper;
 
   public List<JobListing> getJobListings() {
     return this.jobListingRepository.findAll();
@@ -19,8 +22,11 @@ public class JobListingService {
   public JobListing createJobListing(CreateJobListingDto reqDto) {
     // TODO: get user id from token
     String createdBy = "5f9f9f9f9f9f9f9f9f9f9f9f";
-    JobListing jobListing = new JobListing(reqDto.getTitle(), reqDto.getDescription(), reqDto.getLocation(),
-        reqDto.getStartDate(), reqDto.getEmploymentType(), createdBy, LocalDateTime.now(), LocalDateTime.now());
+
+    JobListing jobListing = modelMapper.map(reqDto, JobListing.class);
+    jobListing.setCreatedBy(createdBy);
+    jobListing.setCreatedAt(LocalDateTime.now());
+    jobListing.setUpdatedAt(LocalDateTime.now());
     return jobListingRepository.save(jobListing);
   }
 
@@ -32,7 +38,7 @@ public class JobListingService {
     jl.setLocation(jobListing.getLocation());
     jl.setEmploymentType(jobListing.getEmploymentType());
     jl.setStartDate(jobListing.getStartDate());
-    jl.setUpdatedOn(LocalDateTime.now());
+    jl.setUpdatedAt(LocalDateTime.now());
     return this.jobListingRepository.save(jl);
   }
 
