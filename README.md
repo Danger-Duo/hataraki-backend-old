@@ -7,9 +7,14 @@ RESTful API service for Hataraki in Java Spring 5.
 - Java JDK 17 (any dist)
 - GNU Make
 
-## Recommended set-up
+## Recommended tools
 
 - VSCode
+
+## First time setup
+
+1. Duplicate file `config/application.properties.example` and rename it to `config/application.properties`
+2. Fill in the new file with appropriate values
 
 ## Running the app
 
