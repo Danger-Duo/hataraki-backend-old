@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface JobApplicationRepository extends MongoRepository<JobApplication, String> {
-
 }
