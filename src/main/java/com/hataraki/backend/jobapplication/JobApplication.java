@@ -24,7 +24,7 @@ public class JobApplication {
     private String resumeLink;
     private String personalStatement;
     // TODO: reference to user collection
-    @DBRef
+    // @DBRef
     private String createdBy;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;

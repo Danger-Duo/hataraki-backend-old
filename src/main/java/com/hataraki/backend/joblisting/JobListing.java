@@ -1,7 +1,6 @@
 package com.hataraki.backend.joblisting;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -19,15 +18,15 @@ public class JobListing {
     private String title;
     private String description;
     private String location;
-    private Date startDate;
+    private String startDate;
     private String employmentType;
     // TODO: reference to user collection
-    @DBRef
+    // @DBRef
     private String createdBy;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
 
-    public JobListing(String title, String description, String location, Date startDate, String employmentType,
+    public JobListing(String title, String description, String location, String startDate, String employmentType,
             String createdBy, LocalDateTime createdOn, LocalDateTime updatedOn) {
         this.title = title;
         this.description = description;
