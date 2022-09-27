@@ -8,9 +8,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.hataraki.backend.joblisting.JobListing;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Document(collection = "jobapplications")
+@NoArgsConstructor
 public class JobApplication {
 
     @Id
@@ -26,21 +28,6 @@ public class JobApplication {
     // TODO: reference to user collection
     // @DBRef
     private String createdBy;
-    private LocalDateTime createdOn;
-    private LocalDateTime updatedOn;
-
-    public JobApplication(JobListing jobListing, String firstName, String lastName, String email, String startDate,
-            String resumeLink, String personalStatement, String createdBy,
-            LocalDateTime createdOn, LocalDateTime updatedOn) {
-        this.jobListing = jobListing;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.startDate = startDate;
-        this.resumeLink = resumeLink;
-        this.personalStatement = personalStatement;
-        this.createdBy = createdBy;
-        this.createdOn = createdOn;
-        this.updatedOn = updatedOn;
-    }
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
