@@ -27,8 +27,8 @@ public class JobApplicationService {
     // TODO: get user id from token
     String userId = "123";
     JobListing jl = this.jobListingService.getJobListingById(req.getJobListingId());
-    // NB: NoArgsConstructor must be defined on JobApplication
     // set model mapper to skip setting jobListingId on id field
+    // NB: NoArgsConstructor must be defined on JobApplication
     JobApplication jobApplication = modelMapper.typeMap(CreateJobApplicationReqDto.class, JobApplication.class)
         .addMappings(mapper -> {
           mapper.skip(JobApplication::setId);
