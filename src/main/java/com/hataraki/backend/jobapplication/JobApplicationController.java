@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,10 +29,6 @@ public class JobApplicationController {
     @ResponseStatus(HttpStatus.CREATED)
     public JobApplication createJobApplication(@RequestBody CreateJobApplicationReqDto req) {
         // get job listing by jobListingId, 404 response if not found
-        try {
-            return this.jobApplicationService.createJobApplication(req);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Listing not found");
-        }
+        return this.jobApplicationService.createJobApplication(req);
     }
 }
