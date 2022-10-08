@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class JobListingService {
 
-  @Autowired
-  private JobListingRepository jobListingRepository;
-  @Autowired
-  private ModelMapper modelMapper;
+  private final JobListingRepository jobListingRepository;
+  private final ModelMapper modelMapper;
 
   public List<JobListing> getJobListings() {
     return this.jobListingRepository.findAll();
