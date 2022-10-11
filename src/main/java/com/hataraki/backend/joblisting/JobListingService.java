@@ -4,16 +4,20 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class JobListingService {
 
-  @Autowired
-  private JobListingRepository jobListingRepository;
-  @Autowired
-  private ModelMapper modelMapper;
+  private final JobListingRepository jobListingRepository;
+  private final ModelMapper modelMapper;
 
   public List<JobListing> getJobListings() {
     return this.jobListingRepository.findAll();
@@ -43,15 +47,14 @@ public class JobListingService {
   }
 
   public JobListing deleteJobListing(String id) {
-    JobListing jobListing = jobListingRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Job listing not found"));
+    JobListing jobListing = getJobListingById(id);
     jobListingRepository.deleteById(id);
     return jobListing;
   }
 
   public JobListing getJobListingById(String id) {
     return jobListingRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Job listing not found"));
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Listing not found"));
   }
 
   public List<JobListing> getJobListingsByCreatedBy(String createdBy) {

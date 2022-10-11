@@ -4,20 +4,21 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hataraki.backend.joblisting.JobListing;
 import com.hataraki.backend.joblisting.JobListingService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class JobApplicationService {
-  @Autowired
-  private JobApplicationRepository jobApplicationRepository;
-  @Autowired
-  private JobListingService jobListingService;
-  @Autowired
-  private ModelMapper modelMapper;
+  private final JobApplicationRepository jobApplicationRepository;
+  private final JobListingService jobListingService;
+  private final ModelMapper modelMapper;
 
   public List<JobApplication> getJobApplications() {
     return this.jobApplicationRepository.findAll();
