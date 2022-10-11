@@ -16,6 +16,7 @@ public class AppUser {
   private String password;
   private String email;
   private String company;
+  private String role;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
 }

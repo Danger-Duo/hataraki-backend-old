@@ -1,6 +1,7 @@
 package com.hataraki.backend;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,13 @@ public class HatarakiBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HatarakiBackendApplication.class, args);
-		log.info("Hataraki Backend started!");
+	}
+
+	@Bean
+	CommandLineRunner checkDatabase(AppUserRepository appUserRepository) {
+		return args -> {
+			appUserRepository.count();
+			log.info("Connected to MongoDB... Hataraki backend is running!");
+		};
 	}
 }
